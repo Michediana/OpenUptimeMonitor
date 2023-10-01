@@ -109,48 +109,4 @@ function getDomainsFromDatabase() {
     return $domains;
 }
 
-// Funzione per stampare i dati dal database
-function printDatabaseResults() {
-    // Imposta il fuso orario su "Europe/Rome"
-    date_default_timezone_set('Europe/Rome');
-
-    $db = new SQLite3('uptime.db'); // Apri il database 'uptime.db'
-
-    // Esegui una query per selezionare tutti i dati dalla tabella 'sites'
-    $query = 'SELECT * FROM sites ORDER BY timestamp DESC'; // Ordina per data decrescente
-    $result = $db->query($query);
-
-    // Stampa l'intestazione della tabella
-    echo "<table border='1'>
-            <tr>
-                <th>URL</th>
-                <th>IP</th>
-                <th>Stato</th>
-                <th>Tempo di Risposta (ms)</th>
-                <th>Timestamp</th>
-            </tr>";
-
-    // Stampa i dati dalla tabella
-    while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-        echo "<tr>";
-        echo "<td>" . $row['url'] . "</td>";
-        echo "<td>" . $row['ip'] . "</td>";
-        echo "<td>" . ($row['online'] ? 'Online' : 'Giù') . "</td>";
-        echo "<td>" . $row['response_time'] . "</td>";
-        echo "<td>" . date('Y-m-d H:i:s', strtotime($row['timestamp'])) . "</td>"; // Formatta il timestamp
-        echo "</tr>";
-    }
-
-    // Chiudi il database
-    $db->close();
-
-    // Chiudi la tabella
-    echo "</table>";
-}
-
-
-// Stampare i risultati dal database
-echo "Risultati del monitoraggio:";
-printDatabaseResults();
-
 ?>
