@@ -2,8 +2,8 @@
 // Verifica se sono stati inviati dati dal form
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Recupera i dati dal form
-    $domainTitle = $_POST["domainTitle"];
-    $domainURL = $_POST["domainURL"];
+    $domainTitle = $_POST["title"];
+    $domainURL = $_POST["url"];
 
     // Funzione per salvare i dati nel database
     function saveToDatabase($title, $url) {
@@ -20,7 +20,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $db = new SQLite3('uptime.db'); // Crea o apri il database 'uptime.db'
 
         // Crea una tabella se non esiste già
-        $db->exec('CREATE TABLE IF NOT EXISTS domains (title TEXT, url TEXT, ip TEXT, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)');
+        $db->exec('CREATE TABLE IF NOT EXISTS domains (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title TEXT,
+                url TEXT,
+                ip TEXT,
+                timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+            )');
 
         // Inserisci i dati nel database
         $stmt = $db->prepare('INSERT INTO domains (title, url, ip, timestamp) VALUES (:title, :url, :ip, :timestamp)');
