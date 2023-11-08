@@ -1,3 +1,4 @@
+![[/img/logo.png](https://raw.githubusercontent.com/Michediana/OpenUptimeMonitor/main/img/favicon.png)](https://raw.githubusercontent.com/Michediana/OpenUptimeMonitor/main/img/1.png)
 # OpenUptimeMonitor
 OpenUPtime Monitor is a free uptime monitor, made to be easy to use and fast to implement.
 
