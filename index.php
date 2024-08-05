@@ -222,6 +222,23 @@ function printDatabaseResultsInCards() {
             <li><a onclick="showSection('home')" class="waves-effect"><i class="material-symbols-rounded">home</i>Home</a></li>
             <li><a onclick="showSection('edit_data_section')" class="waves-effect"><i class="material-symbols-rounded">list</i>Domains List</a></li>
             <li><a onclick="showSection('raw_data')" class="waves-effect"><i class="material-symbols-rounded">database</i>Raw Data</a></li>
+            <li>
+                <a style="flex-direction: column;">
+                    <div class="progress">
+                        <div class="determinate" id="timer_progressbar"></div>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;">
+                        <span>Refresh in: <span id="progressbar_time"></span></span>
+                        <div class="switch">
+                            <label>
+                                <input type="checkbox">
+                                <span class="lever"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                </a>
+            </li>
             <li><div class="divider"></div></li>
             <li><a class="subheader">Developed by Michele Diana</a></li>
             <li><a class="subheader">V 0.0.1 - ALPHA</a></li>
@@ -388,9 +405,17 @@ function printDatabaseResultsInCards() {
         document.addEventListener("DOMContentLoaded", () => {
             progressbar.style.display = "none";
             showSection(window.location.hash.replace("#", "") || "home");
+            sessionStorage.setItem("interval", 29);
             setTimeout(() => {
                 refresh();
             }, 30000);
+            setInterval(() => {
+                let seconds = sessionStorage.getItem("interval");
+                let percentage = (seconds / 30) * 100;
+                document.getElementById("timer_progressbar").style.width = percentage + "%";
+                sessionStorage.setItem("interval", seconds - 1);
+                document.getElementById("progressbar_time").innerText = seconds + "s";
+            }, 1000);
         });
 
         function showSection(id){
