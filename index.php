@@ -243,8 +243,8 @@ function printDatabaseResultsInCards() {
             <section id="home">
                 <h3>Your Monitors</h3>
                  <!-- Modal Trigger -->
-                <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-symbols-rounded left">add</i>New domain</a>
-                <a class="waves-effect waves-light btn green" onclick="refresh()"><i class="material-symbols-rounded left">refresh</i>Refresh</a>
+                <a class="btn filled icon-right rounded waves-effect waves-light modal-trigger" href="#modal1"><i class="material-symbols-rounded left">add</i>New domain</a>
+                <a class="btn filled icon-right rounded waves-effect waves-light green" onclick="refresh()"><i class="material-symbols-rounded left">refresh</i>Refresh</a>
                 <br><br>
                 <!-- Modal Structure -->
                 <div id="modal1" class="modal">
