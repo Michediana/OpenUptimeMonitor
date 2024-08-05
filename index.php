@@ -71,7 +71,7 @@ function getReponseTimeById($id) {
     $db = new SQLite3('uptime.db');
     $query = 'SELECT * FROM sites WHERE domain_id = '.$id.' ORDER BY timestamp DESC LIMIT 50'; // Ordina per data decrescente
     $result = $db->query($query);
-    $print;
+    $print = "";
     while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
         $print = $print . $row["response_time"].",";
     }
@@ -82,7 +82,7 @@ function getTimestampById($id) {
     $db = new SQLite3('uptime.db');
     $query = 'SELECT * FROM sites WHERE domain_id = '.$id.' ORDER BY timestamp DESC LIMIT 50 '; // Ordina per data decrescente
     $result = $db->query($query);
-    $print;
+    $print = "";
     while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
         $print = $print . "'".$row["timestamp"]."',";
     }
