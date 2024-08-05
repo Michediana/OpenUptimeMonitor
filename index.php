@@ -384,6 +384,7 @@ function printDatabaseResultsInCards() {
         const progressbar = document.getElementById("progressbar");
         document.addEventListener("DOMContentLoaded", () => {
             progressbar.style.display = "none";
+            showSection(window.location.hash.replace("#", "") || "home");
             setTimeout(() => {
                 refresh();
             }, 30000);
@@ -394,6 +395,7 @@ function printDatabaseResultsInCards() {
                 el.style.display = "none";
             });
             document.getElementById(id).style.display = "block";
+            window.location.hash = id;
         }
 
         function refresh(){
