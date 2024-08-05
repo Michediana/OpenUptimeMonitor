@@ -374,7 +374,10 @@ function printDatabaseResultsInCards() {
             </section>
 
             <section id="raw_data" style="display:none;">
-                <?php printDatabaseResults(); ?>
+                <div class="card-panel">
+                    <h4>Raw DB Data</h4>
+                    <?php printDatabaseResults(); ?>
+                </div>
             </section>
         </div>
         </main>
